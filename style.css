@@ -1,0 +1,270 @@
+:root {
+    --primary: #0d6efd; /* Blue */
+    --secondary: #af1763; /* Pink */
+    --accent: #191c24; /* Dark */
+    --highlight: #844fc1; /* Purple */
+    --background: #e5eaef; /* Light Gray */
+    --text-primary: #191c24; /* Dark Text */
+    --danger: #dc3545; /* Red */
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background);
+    color: var(--text-primary);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Authentication Container Styles */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--highlight) 100%);
+    padding: 1rem;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    padding: 2.5rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow-lg);
+}
+
+/* Form Controls */
+.form-control {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.2rem rgba(125, 160, 250, 0.25);
+}
+
+.form-label {
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--highlight);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow);
+}
+
+.social-btn {
+    width: 100%;
+    padding: 0.75rem;
+    margin: 1rem 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    /* background: var(--secondary); */
+    color: white;
+    border-color: var(--secondary);
+}
+
+/* Dashboard Styles */
+.dashboard-container {
+    background-color: var(--background);
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: white !important;
+    box-shadow: var(--shadow);
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.navbar-brand {
+    color: var(--primary) !important;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.navbar-text {
+    color: var(--text-primary) !important;
+    font-weight: 500;
+}
+
+/* Chart Container */
+.chart-container {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+/* Filters Card */
+.card {
+    background: white;
+    border: none;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.card-title {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+/* Form Select & Inputs */
+.form-select {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.2rem rgba(125, 160, 250, 0.25);
+}
+
+/* Buttons */
+.btn-outline-danger {
+    color: var(--danger);
+    border-color: var(--danger);
+    border-radius: 8px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-danger:hover {
+    background-color: var(--danger);
+    border-color: var(--danger);
+    color: white;
+}
+
+/* Links */
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--highlight);
+    text-decoration: none;
+}
+
+/* Chart Customization */
+#barChart, #lineChart {
+    width: 100% !important;
+    height: 400px !important;
+    margin: 1rem 0;
+}
+
+/* Dark Mode */
+/* body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-mode .navbar-light {
+    background-color: #444;
+}
+
+body.dark-mode .card {
+    background-color: #474545;
+    color: #fff;
+}
+
+body.dark-mode .btn {
+    background-color: #666;
+    color: #fff;
+} */
+
+/* Zoom In/Out Styles */
+.zoomed-in {
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+
+.zoomed-out {
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+/* Centering Welcome Message */
+.welcome-message {
+    text-align: center;
+    font-size: 1.5rem; /* Adjust as needed */
+    margin: 2rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .auth-card {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .dashboard-container {
+        padding: 0.5rem;
+    }
+    
+    .chart-container {
+        padding: 1rem;
+    }
+    
+    .navbar {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
