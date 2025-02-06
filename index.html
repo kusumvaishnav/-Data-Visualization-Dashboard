@@ -6,137 +6,203 @@
     <title>Analytics Dashboard</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-     <!-- Sign Up Page  -->
-    <div id="signupPage" class="auth-container">
-        <div class="auth-card">
-            <h2 class="text-center mb-4">Sign Up</h2>
-            <button class="social-btn">
-                
-                Continue with Google
+   
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <form id="signupForm">
-                <div class="mb-3">
-                    <label class="form-label">Full Name</label>
-                    <input type="text" name="fullName" class="form-control" required>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" id="homeBtn" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profileBtn" href="#">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="settingsBtn" href="#">Settings</a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center">
+                    <div class="welcome-message me-3">
+                        <span id="welcomeMessage">Welcome, <span id="userDisplay"></span></span>
+                    </div>
+                    <div class="dropdown">
+                        <span id="profileIcon" class="material-icons" data-bs-toggle="dropdown">
+                            account_circle
+                        </span>
+                        <ul class="dropdown-menu dropdown-menu-end" id="profileMenu">
+                            <li><a class="dropdown-item" href="#" id="logoutBtn">Logout</a></li>
+                            <li><a class="dropdown-item" href="#" id="signoutBtn">Sign out</a></li>
+                            
+                        </ul>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Username</label>
-                    <input type="text" name="username" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" required>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Sign Up</button>
-            </form>
-            <div class="text-center mt-3">
-                <a href="#" id="showLogin">Already have an account? Log in</a>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <!-- Login Page -->
-    <div id="loginPage" class="auth-container" style="display: none;">
-        <div class="auth-card">
-            <h2 class="text-center mb-4">Login</h2>
-            <button class="social-btn">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Google_Icons.svg" alt="Google" width="20">
-                Continue with Google
-            </button>
-            <form id="loginForm">
-                <div class="mb-3">
-                    <label class="form-label">Username</label>
-                    <input type="text" id="username" class="form-control" required>
+    
+    <div class="main-container mt-5 pt-4">
+       
+        <div id="signupPage" class="auth-container">
+            <div class="auth-card">
+                <h2 class="text-center mb-4">Sign Up</h2>
+                <form id="signupForm">
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" name="fullName" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" name="username" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                </form>
+                <div class="text-center mt-3">
+                    <a href="#" id="showLogin">Already have an account? Log in</a>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Password</label>
-                    <input type="password" id="password" class="form-control" required>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Login</button>
-            </form>
-            <div class="text-center mt-3">
-                <a href="#" id="showSignup">Don't have an account? Sign up</a>
             </div>
         </div>
-    </div>
-
-    <!-- Dashboard -->
-    <div id="dashboardPage" class="dashboard-container" style="display: none;">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-            <div class="container-fluid">
-                <a class="navbar-brand">Dashboard</a>
-                <div class="d-flex">
-                    <span class="navbar-text me-3">
-                        Welcome, <span id="userDisplay"></span>
-                    </span>
-                    <button class="btn btn-outline-danger" id="logoutBtn">Logout</button>
-                    <!-- <button class="btn btn-dark" id="modeToggle">Switch Mode</button> -->
-                </div>
-            </div>
-        </nav>
 
         
-       
+        <div id="loginPage" class="auth-container" style="display: none;">
+            <div class="auth-card">
+                <h2 class="text-center mb-4">Login</h2>
+                <form id="loginForm">
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" id="username" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" id="password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                </form>
+                <div class="text-center mt-3">
+                    <a href="#" id="showSignup">Don't have an account? Sign up</a>
+                </div>
+                <div class="text-center mt-3">
+                    <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+                </div>
+            </div>
+        </div>
 
-        <div class="container">
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Filters</h5>
-                            <div class="row">
-                                <div class="col-md-3 mb-2">
-                                    <select class="form-select" id="ageFilter">
-                                        <option value="all">All Ages</option>
-                                        <option value="15-25">15-25</option>
-                                        <option value=">25">>25</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3 mb-2">
-                                    <select class="form-select" id="genderFilter">
-                                        <option value="all">All Genders</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3 mb-2">
-                                    <input type="date" class="form-control" id="startDate">
-                                </div>
-                                <div class="col-md-3 mb-2">
-                                    <input type="date" class="form-control" id="endDate">
+        <div id="dashboardPage" class="dashboard-container" style="display: none;">
+            <div class="container">
+               
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card filters-section">
+                            <div class="card-body">
+                                <h5 class="card-title">Filters</h5>
+                                <div class="row">
+                                    <div class="col-md-3 mb-2">
+                                        <select class="form-select" id="ageFilter">
+                                            <option value="all">All Ages</option>
+                                            <option value="15-25">15-25</option>
+                                            <option value=">25">>25</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-2">
+                                        <select class="form-select" id="genderFilter">
+                                            <option value="all">All Genders</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-2">
+                                        <input type="date" class="form-control" id="startDate">
+                                    </div>
+                                    <div class="col-md-3 mb-2">
+                                        <input type="date" class="form-control" id="endDate">
+                                    </div>
+                                    <div class="col-md-3 mb-2">
+                                        <button id="filter" class="btn btn-primary">Apply Filter</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+                
+                <div class="mb-3">
+                    <button id="zoomIn" class="btn btn-primary">Zoom In</button>
+                    <button id="zoomOut" class="btn btn-primary">Zoom Out</button>
+                </div>
 
-
-            <div>
-                <button id="zoomIn" class="btn btn-primary">Zoom In</button>
-                <button id="zoomOut" class="btn btn-primary">Zoom Out</button>
-            </div>
-
-            <div class="row">
-                <div class="col-12 mb-4">
-                    <div class="chart-container">
-                        <canvas id="barChart"></canvas>
+                
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <div class="chart-container">
+                            <canvas id="barChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="chart-container">
+                            <canvas id="lineChart"></canvas>
+                        </div>
                     </div>
                 </div>
-                <div class="col-12">
-                    <div class="chart-container">
-                        <canvas id="lineChart"></canvas>
-                    </div>
+            </div>
+        </div>
+
+        <div id="profilePage" class="container mt-4" style="display: none;">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">User  Profile</h2>
+                    <p><strong>Full Name:</strong> <span id="profileFullName"></span></p>
+                    <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+                    <p><strong>Username:</strong> <span id="profileUsername"></span></p>
                 </div>
             </div>
+        </div>
+
+      
+        <div id="settingsPage" class="container mt-4" style="display: none;">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Settings</h2>
+                    <form id="settingsForm">
+                        <div class="mb-3">
+                            <label class="form-label">Change Password</label>
+                            <input type="password" class="form-control" id="newPassword" placeholder="New Password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Password</button>
+                        
+                    </form>
+                    <button id="shareUrlBtn" class="btn btn-secondary mt-3">Share URL</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+    <div class="url-popup" id="urlPopup" style="display: none;">
+        <div class="popup-content">
+            <span class="close-popup" onclick="document.getElementById('urlPopup').style.display = 'none';">×</span>
+            <p id="shared-url-display"></p>
+            <button id="copyUrlBtn" class="btn btn-secondary mt-2">
+                <span class="material-icons">content_copy</span> Copy URL
+            </button>
         </div>
     </div>
 

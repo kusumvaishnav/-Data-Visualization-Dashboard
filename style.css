@@ -1,14 +1,18 @@
 :root {
-    --primary: #0d6efd; /* Blue */
-    --secondary: #af1763; /* Pink */
-    --accent: #191c24; /* Dark */
-    --highlight: #844fc1; /* Purple */
-    --background: #e5eaef; /* Light Gray */
-    --text-primary: #191c24; /* Dark Text */
-    --danger: #dc3545; /* Red */
-    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.2);
+    --primary: #4361ee;
+    --secondary: #3f37c9;
+    --accent: #4895ef;
+    --success: #4cc9f0;
+    --background: #f8fafa;
+    --text-primary: #2b2d42;
+    --text-secondary: #8d99ae;
+    --white: #ffffff;
+    --danger: #ef233c;
+    --warning: #ff9f1c;
+    --shadow: 0 2px 10px rgba(67, 97, 238, 0.1);
+    --shadow-lg: 0 4px 20px rgba(67, 97, 238, 0.15);
 }
+
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -19,252 +23,442 @@ body {
     line-height: 1.6;
 }
 
-/* Authentication Container Styles */
+
+.navbar {
+    background: var(--white) !important;
+    box-shadow: var(--shadow);
+    padding: 1rem 1.5rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-brand {
+    color: var(--primary) !important;
+    font-weight: 700;
+    font-size: 1.8rem;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: translateY(9px);
+}
+
+.nav-link {
+    color: var(--text-primary) !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px;
+   /* font-size: 1.3rem; */
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary) !important;
+    background-color: rgba(67, 97, 238, 0.1);
+}
+
+.nav-link.active {
+    color: var(--primary) !important;
+    background-color: rgba(67, 97, 238, 0.15);
+}
+
+
+.welcome-message {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+#profileIcon {
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--primary);
+    transition: transform 0.3s ease;
+}
+
+#profileIcon:hover {
+    transform: scale(2.0);
+}
+
+.dropdown-menu {
+    border: none;
+    box-shadow: var(--shadow-lg);
+    border-radius: 12px;
+    padding: 0.5rem;
+   
+}
+
+.dropdown-item {
+    color: var(--text-primary);
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+   
+}
+
+.dropdown-item:hover {
+    background-color: rgba(67, 97, 238, 0.1);
+    color: var(--primary);
+}
+
+
+.main-container {
+    padding-top: 4rem;
+    min-height: 100vh;
+    background-color: var(--background);
+}
+
+
 .auth-container {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--highlight) 100%);
-    padding: 1rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    padding: 2rem;
 }
 
 .auth-card {
     width: 100%;
     max-width: 420px;
     padding: 2.5rem;
-    background: white;
-    border-radius: 15px;
+    background: var(--white);
+    border-radius: 20px;
     box-shadow: var(--shadow-lg);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
 }
 
-/* Form Controls */
-.form-control {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
+.auth-card:hover {
+    transform: translateY(-5px);
+}
+
+
+.form-control, .form-select {
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
     transition: all 0.3s ease;
+    background-color: #f8f9fa;
 }
 
-.form-control:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 0.2rem rgba(125, 160, 250, 0.25);
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.2);
+    background-color: var(--white);
 }
 
-.form-label {
-    color: var(--text-primary);
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-}
 
-/* Buttons */
-.btn-primary {
-    background-color: var(--primary);
+.btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
     border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    font-weight: 500;
-    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, var(--primary), var(--accent));
+    border: none;
+    
 }
 
 .btn-primary:hover {
-    background-color: var(--highlight);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow);
+    background: linear-gradient(45deg, var(--accent), var(--primary));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
 }
-
-.social-btn {
-    width: 100%;
-    padding: 0.75rem;
-    margin: 1rem 0;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    background: white;
-    color: var(--text-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.social-btn:hover {
-    /* background: var(--secondary); */
-    color: white;
-    border-color: var(--secondary);
-}
-
-/* Dashboard Styles */
-.dashboard-container {
-    background-color: var(--background);
-    min-height: 100vh;
-    padding: 1rem;
-}
-
-/* Navbar Styles */
-.navbar {
-    background-color: white !important;
-    box-shadow: var(--shadow);
+.social-btn{
+    padding: 0.8rem 1.5rem;
     border-radius: 10px;
-    margin-bottom: 2rem;
-}
-
-.navbar-brand {
-    color: var(--primary) !important;
     font-weight: 600;
-    font-size: 1.25rem;
-}
-
-.navbar-text {
-    color: var(--text-primary) !important;
-    font-weight: 500;
-}
-
-/* Chart Container */
-.chart-container {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-    margin-bottom: 2rem;
-}
-
-/* Filters Card */
-.card {
-    background: white;
+    transition: all 0.3s ease;
     border: none;
-    border-radius: 12px;
+}
+
+
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.chart-container {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+}
+
+
+.chart-container {
+    transition: transform 0.3s ease;
+}
+
+.filters-section {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
     box-shadow: var(--shadow);
 }
 
-.card-title {
-    color: var(--primary);
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-}
 
-/* Form Select & Inputs */
-.form-select {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
-    transition: all 0.3s ease;
-}
-
-.form-select:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 0.2rem rgba(125, 160, 250, 0.25);
-}
-
-/* Buttons */
-.btn-outline-danger {
-    color: var(--danger);
-    border-color: var(--danger);
-    border-radius: 8px;
-    padding: 0.5rem 1.5rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.btn-outline-danger:hover {
-    background-color: var(--danger);
-    border-color: var(--danger);
-    color: white;
-}
-
-/* Links */
-a {
-    color: var(--primary);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: var(--highlight);
-    text-decoration: none;
-}
-
-/* Chart Customization */
-#barChart, #lineChart {
-    width: 100% !important;
-    height: 400px !important;
-    margin: 1rem 0;
-}
-
-/* Dark Mode */
-/* body.dark-mode {
-    background-color: #333;
-    color: #fff;
-}
-
-body.dark-mode .navbar-light {
-    background-color: #444;
-}
-
-body.dark-mode .card {
-    background-color: #474545;
-    color: #fff;
-}
-
-body.dark-mode .btn {
-    background-color: #666;
-    color: #fff;
-} */
-
-/* Zoom In/Out Styles */
-.zoomed-in {
-    transform: scale(1.2);
-    transition: transform 0.3s ease;
-}
-
-.zoomed-out {
-    transform: scale(0.8);
-    transition: transform 0.3s ease;
-}
-
-/* Centering Welcome Message */
-.welcome-message {
-    text-align: center;
-    font-size: 1.5rem; /* Adjust as needed */
-    margin: 2rem 0;
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
+    .navbar {
+        padding: 0.8rem;
+    }
+
     .auth-card {
         margin: 1rem;
         padding: 1.5rem;
     }
-    
-    .dashboard-container {
-        padding: 0.5rem;
+
+    .main-container {
+        padding-top: 4.5rem;
     }
-    
+
     .chart-container {
         padding: 1rem;
+        margin: 1rem 0;
     }
-    
-    .navbar {
-        margin-bottom: 1rem;
+
+    .navbar-collapse {
+        text-align: center; 
+    }
+
+    .nav-link {
+        padding: 0.5rem;
     }
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
 }
 
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-::-webkit-scrollbar-thumb {
-    background: var(--accent);
-    border-radius: 4px;
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.8rem;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: var(--primary);
+
+.password-field-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
+
+
+
+.form-group .material-icons:hover,
+.password-toggle:hover {
+    color: var(--primary);
+    background-color: rgba(67, 97, 238, 0.1);
+}
+
+
+.input-with-icon {
+    position: relative;
+    width: 100%;
+}
+
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+
+#loginForm, #signupForm, #settingsForm {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+    background-color: var(--white);
+}
+
+.form-control:focus + .material-icons,
+.form-control:focus + .password-toggle {
+    color: var(--primary);
+}
+
+
+.form-section {
+    margin-bottom: 2rem;
+}
+
+
+.form-control.is-invalid {
+    border-color: var(--danger);
+    background-image: none;
+}
+
+.form-control.is-invalid + .material-icons,
+.form-control.is-invalid + .password-toggle {
+    color: var(--danger);
+}
+
+
+.form-control.is-valid {
+    border-color: var(--success);
+    background-image: none;
+}
+
+.form-control.is-valid + .material-icons,
+.form-control.is-valid + .password-toggle {
+    color: var(--success);
+}
+
+.form-message {
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.form-message.error {
+    color: var(--danger);
+}
+
+.form-message.success {
+    color: var(--success);
+}
+
+
+.password-strength {
+    height: 4px;
+    border-radius: 2px;
+    margin-top: 0.5rem;
+    background-color: #e0e0e0;
+    overflow: hidden;
+}
+
+.password-strength-bar {
+    height: 100%;
+    width: 0;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+
+@media (max-width: 768px) {
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-control {
+        height: 44px;
+        font-size: 16px;
+    }
+
+    .form-group .material-icons,
+    .password-toggle {
+        right: 10px;
+        padding: 6px;
+    }
+}
+
+
+@keyframes iconClick {
+    0% { transform: translateY(-50%) scale(1); }
+    50% { transform: translateY(-50%) scale(0.9); }
+    100% { transform: translateY(-50%) scale(1); }
+}
+
+.icon-click {
+    animation: iconClick 0.2s ease;
+}
+#forgotPasswordLink {
+    display: inline-block;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+#forgotPasswordLink:hover {
+    background-color: rgba(67, 97, 238, 0.1);
+    text-decoration: none;
+}
+
+
+.form-btn {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+}
+
+.form-btn .material-icons {
+    position: static;
+    transform: none;
+    font-size: 20px;
+}
+.url-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(38, 8, 235, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#shareUrlBtn {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+#shareUrlBtn:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+
+
