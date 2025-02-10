@@ -172,6 +172,7 @@ async function filterData() {
     const ageFilter = document.getElementById('ageFilter').value;
     const genderFilter = document.getElementById('genderFilter').value;
     const startDate = document.getElementById('startDate').value;
+   
 
     return data.filter(item => {
         const dateMatch = (!startDate || (item.Day >= startDate));
@@ -387,6 +388,7 @@ function generateShareableURL() {
     const ageFilter = document.getElementById('ageFilter').value;
     const genderFilter = document.getElementById('genderFilter').value;
     const startDate = document.getElementById('startDate').value;
+    
 
     const baseURL = window.location.href.split('?')[0]; 
     const params = new URLSearchParams({
@@ -418,5 +420,100 @@ document.querySelector('.close-popup').addEventListener('click', () => {
     document.getElementById('urlPopup').style.display = 'none'; 
 });
 
+let currentFilteredData = [];
+let allData = [];
+
+async function filterData() {
+    const data = await fetchData();
+    const ageFilter = document.getElementById('ageFilter').value;
+    const genderFilter = document.getElementById('genderFilter').value;
+    const startDate = document.getElementById('startDate').value;
+   
+    allData = data;
+
+    const filteredData = data.filter(item => {
+        const dateMatch = (!startDate || (item.Day >= startDate));
+        const ageMatch = (ageFilter === 'all' || item.Age === ageFilter);
+        const genderMatch = (genderFilter === 'all' || item.Gender === genderFilter);
+        return dateMatch && ageMatch && genderMatch;
+    });
+
+    currentFilteredData = filteredData;
+    
+    
+    localStorage.setItem('lastFilters', JSON.stringify({
+        age: ageFilter,
+        gender: genderFilter,
+        startDate: startDate
+    }));
+
+    return filteredData;
+}
+
+async function updateSheetView(showAll = false) {
+    const tableBody = document.getElementById('dataSheetBody');
+    tableBody.innerHTML = '';
+    
+    const dataToShow = showAll ? allData : currentFilteredData;
+    
+    dataToShow.forEach((row, index) => {
+        const tr = document.createElement('tr');
+        tr.style.backgroundColor = index % 2 === 0 ? '#ffffff' : '#f9f9f9';
+        
+        tr.innerHTML = `
+            <td style="padding: 12px; border: 1px solid #ddd;">${row.Day}</td>
+            <td style="padding: 12px; border: 1px solid #ddd;">${row.Age}</td>
+            <td style="padding: 12px; border: 1px solid #ddd;">${row.Gender}</td>
+            <td style="padding: 12px; border: 1px solid #ddd;">${row.A}</td>
+            <td style="padding: 12px; border: 1px solid #ddd;">${row.B}</td>
+            <td style="padding: 12px; border: 1px solid #ddd;">${row.C}</td>
+            <td style="padding: 12px; border: 1px solid #ddd;">${row.D}</td>
+            <td style="padding: 12px; border: 1px solid #ddd;">${row.E}</td>
+            <td style="padding: 12px; border: 1px solid #ddd;">${row.F}</td>
+        `;
+        tableBody.appendChild(tr);
+    });
+}
 
 
+document.getElementById('viewSheetBtn').addEventListener('click', function() {
+    const sheetView = document.getElementById('sheetView');
+    if (sheetView.style.display === 'none') {
+        sheetView.style.display = 'block';
+        this.textContent = 'Hide Sheet';
+        localStorage.setItem('sheetVisible', 'true');
+        updateSheetView(false); 
+    } else {
+        sheetView.style.display = 'none';
+        this.textContent = 'View Sheet';
+        localStorage.setItem('sheetVisible', 'false');
+        updateSheetView(true);
+    }
+});
+
+async function initializeDashboard() {
+   
+    const lastFilters = JSON.parse(localStorage.getItem('lastFilters'));
+    if (lastFilters) {
+        document.getElementById('ageFilter').value = lastFilters.age;
+        document.getElementById('genderFilter').value = lastFilters.gender;
+        document.getElementById('startDate').value = lastFilters.startDate;
+    }
+
+    await updateCharts();
+    
+    if (localStorage.getItem('sheetVisible') === 'true') {
+        const sheetView = document.getElementById('sheetView');
+        const viewSheetBtn = document.getElementById('viewSheetBtn');
+        sheetView.style.display = 'block';
+        viewSheetBtn.textContent = 'Hide Sheet';
+        await updateSheetView(false); 
+    }
+}
+
+document.getElementById('filter').addEventListener('click', async () => {
+    await updateCharts();
+    if (document.getElementById('sheetView').style.display === 'block') {
+        await updateSheetView(false); 
+    }
+});

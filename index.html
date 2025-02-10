@@ -6,6 +6,7 @@
     <title>Analytics Dashboard</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -206,6 +207,31 @@
         </div>
     </div>
 
+    <div class="sheet-container">
+        <button id="viewSheetBtn" class="view-sheet-btn">
+            View Sheet
+        </button>
+        
+        <div id="sheetView" class="sheet-view" style="display: none;">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>C</th>
+                        <th>D</th>
+                        <th>E</th>
+                        <th>F</th>
+                    </tr>
+                </thead>
+                <tbody id="dataSheetBody"></tbody>
+            </table>
+        </div>
+    </div>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
