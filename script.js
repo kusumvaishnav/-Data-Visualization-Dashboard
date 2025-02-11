@@ -1,3 +1,17 @@
+document.getElementById('zoomIn').addEventListener('click', () => {
+    let barChartContainer = document.getElementById('barChart').parentElement;
+    let currentScale = parseFloat(barChartContainer.style.transform.replace('scale(', '').replace(')', '')) || 1;
+    barChartContainer.style.transform = `scale(${currentScale + 0.1})`;
+});
+
+document.getElementById('zoomOut').addEventListener('click', () => {
+    let barChartContainer = document.getElementById('barChart').parentElement;
+    let currentScale = parseFloat(barChartContainer.style.transform.replace('scale(', '').replace(')', '')) || 1;
+    if (currentScale > 0.5) {
+        barChartContainer.style.transform = `scale(${currentScale - 0.1})`;
+    }
+});
+
 let registeredUsers = [
     {
         fullName: "user",
@@ -7,17 +21,6 @@ let registeredUsers = [
     }
 ];
 
-document.getElementById('zoomIn').addEventListener('click', () => {
-    let currentScale = parseFloat(document.getElementById('dashboardPage').style.transform.replace('scale(', '').replace(')', '')) || 1;
-    document.getElementById('dashboardPage').style.transform = `scale(${currentScale + 0.1})`;
-});
-
-document.getElementById('zoomOut').addEventListener('click', () => {
-    let currentScale = parseFloat(document.getElementById('dashboardPage').style.transform.replace('scale(', '').replace(')', '')) || 1;
-    if (currentScale > 0.5) {
-        document.getElementById('dashboardPage').style.transform = `scale(${currentScale - 0.1})`;
-    }
-});
 
 document.addEventListener('DOMContentLoaded', function () {
     const isAuthenticated = localStorage.getItem('isAuthenticated');
@@ -77,7 +80,6 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
         return;
     }
     
-    // Check if the username already exists
     const existingUser  = registeredUsers.find(user => user.username === username);
     if (existingUser ) {
         alert('Username already exists! Logging you in.');
@@ -516,4 +518,14 @@ document.getElementById('filter').addEventListener('click', async () => {
     if (document.getElementById('sheetView').style.display === 'block') {
         await updateSheetView(false); 
     }
+});
+document.getElementById('resetFilters').addEventListener('click', () => {
+   
+    document.getElementById('ageFilter').value = 'all';
+    document.getElementById('genderFilter').value = 'all';
+    document.getElementById('startDate').value = '';
+    document.getElementById('endDate').value = '';
+
+    
+    updateCharts();
 });
